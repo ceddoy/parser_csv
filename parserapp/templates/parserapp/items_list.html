@@ -9,6 +9,7 @@
         onclick="window.location.href = '{% url 'upload' %}';">
     Загрузить csv-файл
 </button>
+<h2>Список выгруженных данных</h2>
 <div class="row">
     <div class="col-md-4">
         <table class="table table-striped table-hover">
@@ -64,34 +65,5 @@
         </table>
     </div>
 </div>
-{% if page_obj.has_previous %}
-  <a href="?page={{ page_obj.previous_page_number }}">« Предыдущая страница</a>
-
-  {% if page_obj.number > 3 %}
-    <a href="?page=1">1</a>
-    {% if page_obj.number > 4 %}
-      <span>...</span>
-    {% endif %}
-  {% endif %}
-{% endif %}
-
-{% for num in page_obj.paginator.page_range %}
-  {% if page_obj.number == num %}
-    <a href="?page={{ num }}">{{ num }}</a>
-  {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-    <a href="?page={{ num }}">{{ num }}</a>
-  {% endif %}
-{% endfor %}
-
-{% if page_obj.has_next %}
-  {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
-    <span>...</span>
-    <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
-  {% elif page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
-    <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
-  {% endif %}
-
-  <a href="?page={{ page_obj.next_page_number }}">Следующая страница »</a>
-{% endif %}
 </body>
 </html>
