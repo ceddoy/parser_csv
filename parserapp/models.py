@@ -9,7 +9,7 @@ class Item(models.Model):
     level_three = models.CharField(max_length=48, blank=True, null=True, verbose_name='Уровень3')
     price = models.PositiveIntegerField(default=0, verbose_name='Цена')
     price_cp = models.PositiveIntegerField(default=0, verbose_name='ЦенаСП')
-    quantity = models.PositiveIntegerField(default=0, verbose_name='Количество')
+    quantity = models.FloatField(default=0, verbose_name='Количество')
     properties = models.TextField(verbose_name='Поля свойств', blank=True, null=True,)
     join_shopping = models.TextField(verbose_name='Совместная покупка', blank=True, null=True,)
     measurement_unit = models.CharField(max_length=15, verbose_name='Единица измерения')
